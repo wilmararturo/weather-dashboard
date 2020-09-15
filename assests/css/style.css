@@ -1,4 +1,20 @@
+.container {
+    width: 100%;
+}
 .navbar .navbar-dark {
     color: #fff;
 }
 
+.hide {
+    display: none;
+}
+
+#current-conditions {
+    margin: 10px;
+    border-style: groove;
+}
+
+#five-day-forecast {
+    margin: 15px;
+    border-style: solid none none none;
+}

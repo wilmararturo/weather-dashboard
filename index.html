@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- local CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assests/css/style.css">
 </head>
 
 <body>
@@ -35,24 +35,36 @@
                         </div>
                         <div class="col-auto input-group">
                             <input type="text" class="form-control" id="cityNameInput" placeholder="City Name">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" id="search-button">
                                 <span class="fa fa-search"></span>
                             </button>
                         </div>
                     </div>
 
                 </form>
-                <div id="city-list">
-                    <button class="cityname col-auto" data-city="New York">New York</button><br>
-                    <button class="cityname col-auto" data-city="Chicago">Chicago</button><br>
-                    <button class="cityname col-auto" data-city="Charleston">Charleston</button><br>
+                <div class="btn-group-lg btn-group-vertical" role="group" aria-label="Cities" id="city-list">
+                    <button class="btn btn-light" data-city="New York">New York</button><br>
+                    <button class="btn btn-light" data-city="Chicago">Chicago</button><br>
+                    <button class="btn btn-light" data-city="Charleston">Charleston</button><br>
 
                 </div>
             </div>
-            <div class="main col-6">
-                <p class="lorem">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati facere sint
-                    corporis optio error architecto quam provident perspiciatis, ab, ea fuga, totam tempore iusto.
-                    Libero velit doloribus vel iusto molestias.</p>
+            <div class="main col-9">
+                <div id="current-conditions" class="card">
+                    <h1 id="city-header">New York <span id="condition-icon"><img
+                                src="http://openweathermap.org/img/wn/01d@2x.png" alt="weather condition"></span> </h1>
+                    <p id="city-temperature">Temperature:</p>
+                    <p id="city-humidity">Humidity:</p>
+                    <p id="city-windspeed">Wind Speed:</p>
+                    <p id="city-uv-index">UV Index:</p>
+
+                </div>
+                <div id="five-day-forecast" class="card">
+                    <h1>5-Day Forecast:</h1>
+                    <p class="ipsum">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, ratione
+                        provident architecto voluptatibus optio ad quisquam harum ut nulla fuga! Cupiditate ut itaque
+                        sed doloremque, et quam. Fugiat, dignissimos voluptates!</p>
+                </div>
             </div>
         </div>
     </div>
@@ -67,6 +79,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
+    <!-- JavaScript for all the things -->
+    <script src="/assests/js/script.js"></script>
 </body>
 
 </html>
