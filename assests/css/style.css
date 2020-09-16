@@ -10,8 +10,8 @@
 }
 
 #current-conditions {
-    margin: 10px;
-    border-style: groove;
+    margin: 25px;
+    border-style: none;
 }
 
 #five-day-forecast {

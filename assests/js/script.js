@@ -4,7 +4,7 @@ var cityListEl = $("#city-list");
 var cityHeaderEl = $("#city-header");
 var cityConditionIconEl = $("#condition-icon");
 var cityConditionIconImgEl = $("#condition-icon-img");
-var cityTemperatureEl = $("#city-temerature");
+var cityTemperatureEl = $("#city-temperature");
 var cityHumidityEl = $("#city-humidity");
 var cityWindSpeedEl = $("#city-windspeed");
 var cityUVIndexEl = $("#city-uv-index");
@@ -20,9 +20,9 @@ function renderUVButton(uvData) {
     cityUVIndexBadgeEl.text(uvIndex);
     if (uvIndex < 3) {
         cityUVIndexBadgeEl.addClass("badge-success");
-    } else if (2 < uvIndex > 8) {
+    } else if (uvIndex < 7) {
         cityUVIndexBadgeEl.addClass("badge-warning");
-    } else if (uvIndex > 7) {
+    } else if (uvIndex > 6) {
         cityUVIndexBadgeEl.addClass("badge-danger");
     }
 }
@@ -37,17 +37,21 @@ function getUVIndex(lat, lon) {
 function updateCurrentConditions(weatherData) {
     console.log(weatherData);
     var conditionIconHtml = "http://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png";
+    var cityTemperatureF = (weatherData.main.temp - 273.15) * 1.80 + 32;
+    var cityHumidity = weatherData.main.humidity;
+    var cityWindSpeed = weatherData.wind.speed;
     var lat = weatherData.coord.lat;
     var lon = weatherData.coord.lon;
     var uvBadge = getUVIndex(lat, lon);
+
     cityConditionIconImgEl
         .attr("src", conditionIconHtml)
         .attr("alt", weatherData.weather[0].description)
         .appendTo(cityConditionIconEl);
     cityHeaderEl.text(weatherData.name).append(cityConditionIconEl);
-    cityTemperatureEl.text(`Temperature: ${weatherData.main.temp}`);
-    cityHumidityEl.text(`Humidity: ${weatherData.main.humidity}`);
-    cityWindSpeedEl.text(`Wind Speed: ${weatherData.wind.speed}`);
+    cityTemperatureEl.text(`Temperature: ${cityTemperatureF.toFixed(2)} F`);
+    cityHumidityEl.text(`Humidity: ${cityHumidity}`);
+    cityWindSpeedEl.text(`Wind Speed: ${cityWindSpeed}`);
     cityUVIndexEl.text("UV Index:").append(cityUVIndexBadgeEl);
 
 }
