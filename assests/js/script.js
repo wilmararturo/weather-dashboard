@@ -36,6 +36,8 @@ function getUVIndex(lat, lon) {
 }
 function updateCurrentConditions(weatherData) {
     console.log(weatherData);
+    var cityName = weatherData.name
+    var cityDate = moment.unix(weatherData.dt).utcOffset(weatherData.timezone / 60).format("MM/DD/YYYY");
     var conditionIconHtml = "http://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png";
     var cityTemperatureF = (weatherData.main.temp - 273.15) * 1.80 + 32;
     var cityHumidity = weatherData.main.humidity;
@@ -48,7 +50,7 @@ function updateCurrentConditions(weatherData) {
         .attr("src", conditionIconHtml)
         .attr("alt", weatherData.weather[0].description)
         .appendTo(cityConditionIconEl);
-    cityHeaderEl.text(weatherData.name).append(cityConditionIconEl);
+    cityHeaderEl.text(`${cityName} (${cityDate})`).append(cityConditionIconEl);
     cityTemperatureEl.text(`Temperature: ${cityTemperatureF.toFixed(2)} F`);
     cityHumidityEl.text(`Humidity: ${cityHumidity}`);
     cityWindSpeedEl.text(`Wind Speed: ${cityWindSpeed}`);
