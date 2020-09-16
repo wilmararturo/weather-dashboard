@@ -81,7 +81,7 @@ function getUVIndex(lat, lon) {
 
 function updateFiveDayForecast(weatherData) {
     console.log(weatherData);
-    forecastGroupEl.empty;
+    forecastGroupEl.empty();
     for (var i = 0; i < 5; i++) {
         var forecastDate = moment.unix(weatherData.list[i].dt)
             .utcOffset(weatherData.city.timezone / 60)
@@ -183,7 +183,7 @@ searchButtonEl.on("click", function (event) {
 })
 
 $(".city-list-btn").on("click", function () {
-    var cityName = $(this);
-    console.log(cityName.data().city);
-    getCurrentWeather(cityName.data().city);
+    var cityButtonName = $(this);
+    console.log(cityButtonName);
+    getCurrentWeather(cityButtonName.data().city);
 })
