@@ -168,7 +168,7 @@ function buildPage() {
         getCurrentWeather("New York");
     } else {
         updateSidebar();
-        getCurrentWeather(cityList[0])
+        getCurrentWeather(cityList[cityList.length - 1])
     }
 
 }
@@ -182,8 +182,8 @@ searchButtonEl.on("click", function (event) {
     getCurrentWeather(cityName);
 })
 
-$(".city-list-btn").on("click", function () {
+$(document).on("click", ".city-list-btn", function () {
     var cityButtonName = $(this);
-    console.log(cityButtonName);
+    console.log(cityButtonName.data().city);
     getCurrentWeather(cityButtonName.data().city);
 })
