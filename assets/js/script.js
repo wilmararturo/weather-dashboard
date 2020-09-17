@@ -38,7 +38,6 @@ var apiKey = "37b169c6c553e6d620b06f52f0e2a54e";
 
 
 function renderUVButton(uvData) {
-    console.log(uvData);
     var uvIndex = Math.round(uvData.value);
     cityUVIndexBadgeEl.text(uvIndex);
     if (uvIndex < 3) {
@@ -80,13 +79,11 @@ function getUVIndex(lat, lon) {
 }
 
 function updateFiveDayForecast(weatherData) {
-    console.log(weatherData);
     forecastGroupEl.empty();
     for (var i = 0; i < 5; i++) {
         var forecastDate = moment.unix(weatherData.list[i].dt)
             .utcOffset(weatherData.city.timezone / 60)
             .format("MM/DD/YYYY");
-        console.log(forecastDate);
         var forecastIcon = weatherData.list[i].weather[0].icon;
         var forecastIconSrc = "http://openweathermap.org/img/wn/" + forecastIcon + "@2x.png"
         var forecastCondition = weatherData.list[i].weather.main;
@@ -106,7 +103,6 @@ function updateFiveDayForecast(weatherData) {
 }
 
 function updateCurrentConditions(weatherData) {
-    console.log(weatherData);
     var cityName = weatherData.name
     var cityDate = moment.unix(weatherData.dt).utcOffset(weatherData.timezone / 60).format("MM/DD/YYYY");
     var conditionIconSrc = "http://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png";
@@ -138,7 +134,6 @@ function buildQueryURL(cityName, forecastType) {
     queryURL = baseURL + forecastType +
         "?q=" + cityName +
         "&appid=" + apiKey;
-    console.log(queryURL);
     return queryURL;
 
 }
@@ -184,6 +179,5 @@ searchButtonEl.on("click", function (event) {
 
 $(document).on("click", ".city-list-btn", function () {
     var cityButtonName = $(this);
-    console.log(cityButtonName.data().city);
     getCurrentWeather(cityButtonName.data().city);
 })
